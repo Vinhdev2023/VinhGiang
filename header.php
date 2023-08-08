@@ -47,7 +47,8 @@ if (isset($message)) {
 
             <div class="icons">
                 <div id="menu-btn" class="fas fa-bars"></div>
-                <?php include 'search/search.php'; ?>
+                <a href="search_page.php" class="fas fa-search"></a>
+                
                 <?php
                 if (!isset($login)) {
                     echo '<div id="user-btn" class="fas fa-user"></div>';
