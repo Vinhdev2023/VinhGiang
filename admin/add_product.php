@@ -66,7 +66,7 @@ include 'masteradmin/mainproduct.php';
         </div>
         <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">Số lượng</span>
-            <input type="number" id="prd_quantity" name="prd_quantity" class="form-control" placeholder="num" aria-label="num" aria-describedby="basic-addon1">
+            <input type="number" id="prd_quantity" name="prd_quantity" min="1" class="form-control" placeholder="num" aria-label="num" aria-describedby="basic-addon1">
         </div>
         <div class="input-group mb-3">
             <span class="input-group-text btn btn-danger" id="basic-addon1">chọn ảnh</span>
