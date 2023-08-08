@@ -72,7 +72,7 @@ if(isset($_POST['add_to_cart'])){
          while($fetch_product = mysqli_fetch_assoc($select_products)){
    ?>
    <form action="" method="post" class="box">
-      <img src="../admin/adimn-img/<?php echo $fetch_product['prd_image']; ?>" alt="" class="image">
+      <img src="admin/adimn-img/<?php echo $fetch_product['prd_image']; ?>" alt="" class="image">
       <div class="name"><?php echo $fetch_product['prd_name']; ?></div>
       <div class="price"><?php echo $fetch_product['prd_price']; ?> VNĐ</div>
       <input type="number"  class="qty" name="product_quantity" min="1" value="1">
