@@ -2,7 +2,8 @@
 include 'config.php';
 if (isset($_SESSION['user_id'])) {
     $user_id = $_SESSION['user_id'];
-
+}else {
+    header('location: login.php');
 }
 if(isset($user_id)){
     $order_query = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM tbl_orders WHERE customer_id = '$user_id'"));
