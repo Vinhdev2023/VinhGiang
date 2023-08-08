@@ -10,8 +10,4 @@ if(isset($user_id)){
     $cart = $order_query - $order_detail_query;
 }
 ?>
-<a href="cart-notify.php"><i class="fas fa-shopping-cart"></i><span>(<?php if (isset($cart)) {
-    echo $cart;
-}else {
-    echo 00;
-} ?>)</span></a>
+<a href="cart-notify.php"><i class="fas fa-shopping-cart"></i><span>(<?php echo number_format($cart); ?>)</span></a>
