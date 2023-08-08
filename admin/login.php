@@ -49,9 +49,9 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
                     echo $erross;
                 }
                 ?>
-                <h3>login now</h3>
-                <input type="username" name="username" placeholder="enter your uesrnasme" required class="box">
-                <input type="password" name="password" placeholder="enter your password" required class="box">
+                <h3>Đăng nhập</h3>
+                <input type="username" name="username" placeholder="nhập tên tài khoản của bạn" required class="box">
+                <input type="password" name="password" placeholder="nhập mật khẩu của bạn" required class="box">
                 <input type="submit" name="sbm" class="btn">
                 <p>Về trang <a href="../index.php">Web cũ</a></p>
 
