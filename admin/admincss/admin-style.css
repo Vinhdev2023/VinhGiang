@@ -1,0 +1,291 @@
+
+body {
+    display: block;
+    margin: 0;
+    height: 100vh;
+    font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.img-fluin {
+    height: 33px;
+    width: 33px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    margin: 0px 8px 0px 13px;
+    border-radius: 50%;
+}
+
+.linkblock {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #4b545c;
+    font-size: 1.25rem;
+    padding: 13px 8px 13px 8px;
+}
+
+a {
+    text-decoration: none;
+
+}
+
+.bigmenu {
+    position: fixed;
+    height: 100vh;
+    float: left;
+    width: 250px;
+    background-color: #343a40;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.admin-info {
+    margin: 16px 0 16px 0;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #4b545c;
+    display: flex;
+    align-items: center;
+}
+
+.img-admin {
+    padding-left: 12.8px;
+}
+
+.img-admin img {
+    margin: 0;
+}
+
+.link-info {
+    padding: 5px 5px 5px 10px;
+}
+
+.form-inline {
+    display: flex;
+    align-items: center;
+    flex-flow: row-reverse;
+}
+
+.inp-group {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+.inp-style {
+    background-color: #3f474e;
+    border: 1px solid #56606a;
+    border-radius: 5px 0 0 5px;
+    color: #fff;
+    padding: 8px 0px 7px 8px;
+}
+
+.btn-style {
+    background-color: #3f474e;
+    border: 1px solid #56606a;
+    border-radius: 0 5px 5px 0;
+    color: #fff;
+    padding: 6px 12px 6px 12px;
+}
+
+.listmenu {
+    margin-top: 5px;
+}
+
+.listmenu-1 {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.open-menu {
+    color: #fff;
+    background-color: #007bff;
+    border-radius: 0.5rem;
+}
+
+.open-menu:hover {
+    color: #fff;
+}
+
+.list-ful {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    font-size: 20px;
+}
+
+.b {
+    height: auto;
+    color: #fff;
+    margin-right: 4px;
+    margin-left: 1px;
+}
+
+.listmenu-2 {
+    list-style: none;
+    display: none;
+    margin: 0;
+    padding: 0;
+}
+
+.limenu:hover .listmenu-2,.limenu:active .listmenu-2:active {
+    display: block;
+
+}
+
+.link {
+    color: #c2c7d0;
+    text-decoration: none;
+}
+
+.link-style {
+    padding: 8px 16px 8px 16px;
+    margin-bottom: 3.2px;
+}
+
+.link:hover {
+    color: rgba(255, 255, 255, .8);
+    text-decoration: none;
+}
+
+#menu-admin-container {
+    padding: 0px 8px 0px 8px;
+    height: 100%;
+}
+
+
+
+.version {
+    float: right;
+    color: #869099;
+}
+
+.content-main {
+    height: 120vh!important;
+    margin-left: 250px;
+
+    padding-bottom: 1px;
+}
+
+.texthead-content {
+    margin: 0;
+}
+
+.header-content {
+    padding: 15px 8px 15px 8px;
+}
+
+.header-row {
+    margin: 0 -7.5px 8px -7.5px;
+    display: flex;
+}
+
+.header-col {
+    width: 50%;
+    padding: 0 7.5px 0 7.5px;
+}
+
+.Dashboard {
+    padding: 0 7.5px 0 7.5px;
+}
+
+.olist {
+    list-style: none;
+    float: right;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.olist li {
+
+    float: left;
+}
+
+.main-footer {
+    bottom: 0;
+    padding: 1rem;
+    margin-left: 250px;
+    background-color: #fff;
+    border-top: 1px solid #dee2e6;
+    color: #869099;
+    transition: margin-left .3s ease-in-out;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none!important;
+}
+
+a:hover {
+    color: #0056b3;
+    text-decoration: none!important;
+}
+
+.active {
+    padding-left: 8px;
+
+    box-sizing: border-box;
+}
+
+.content-body {
+    padding: 0 0.5rem;
+}
+
+.content-container {
+    width: 100%;
+    padding-right: 7.5px;
+    padding-left: 7.5px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.content-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -7.5px;
+    margin-left: -7.5px;
+}
+
+.content-col {
+    padding: 0 7.5px;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+.col {
+    width: 25%;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+.smallbox {
+    /* background-color: green; */
+    display: flex;
+    padding-top: 8px;
+    width: 280px;
+    height: 120px;
+    border-radius: 0.25rem;
+    box-shadow: 0 0 1px rgba(0,0,0,.125), 0 1px 3px rgba(0,0,0,.2);
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.icon {
+    margin-left: 120px;
+}
+
+.control-page {
+    margin-top: 10px;
+    margin-bottom: 0!important;
+    padding-left: 0;
+    list-style: none;
+}
+
+.control-page li {
+    float: left;
+}
