@@ -42,36 +42,33 @@ if (isset($message)) {
             <a href="index.php" class="logo">Books Store</a>
 
             <nav class="navbar">
-                <?php include 'menu/menu.php'; ?>
+                <a href="index.php">Trang Chủ</a>
+                <a href="about.php">Về chúng tôi</a>
+                <a href="shop.php">Cửa hàng</a>
+                <a href="contact.php">Liên hệ</a>
+                <a href="orders.php">Các đơn đặt</a>
             </nav>
 
             <div class="icons">
                 <div id="menu-btn" class="fas fa-bars"></div>
                 <a href="search_page.php" class="fas fa-search"></a>
-                
-                <?php
-                if (!isset($login)) {
-                    echo '<div id="user-btn" class="fas fa-user"></div>';
-                } else {
-                    echo '<div id="user-btn" class="fas fa-user"></div>';
-                }
-                ?>
+                <div id="user-btn" class="fas fa-user"></div>
+
 
                 <?php include 'cart/cart.php'; ?>
                 <!-- cart -->
             </div>
 
-                <?php if (isset($user_id)) {
-                    # code... ?>
+            <?php if (isset($user_id)) { ?>
 
-            <div class="user-box">
-                <p>username : <span><?php echo $_SESSION['user_name']; ?></span></p>
-                <p>email : <span><?php echo $_SESSION['user_email']; ?></span></p>
-                <p><a href="logout.php" class="delete-btn">Đăng xuất</a></p>
-                <p><a href="reset_pass.php" class="delete-btn">Đổi mật khẩu</a></p>
-            </div>
+                <div class="user-box">
+                    <p>username : <span><?php echo $_SESSION['user_name']; ?></span></p>
+                    <p>email : <span><?php echo $_SESSION['user_email']; ?></span></p>
+                    <p><a href="logout.php" class="delete-btn">Đăng xuất</a></p>
+                    <p><a href="reset_pass.php" class="delete-btn">Đổi mật khẩu</a></p>
+                </div>
 
-                <?php } ?>
+            <?php } ?>
 
         </div>
     </div>

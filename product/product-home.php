@@ -1,7 +1,6 @@
 <?php
-include 'admin/masteradmin/config.php';
 $sql_product = "SELECT * FROM tbl_product WHERE prd_quantity > 0 LIMIT 9 ";
-$query = mysqli_query($connect, $sql_product);
+$query = mysqli_query($conn, $sql_product);
 
 ?>
 <?php while ($row = mysqli_fetch_array($query)) { ?>
