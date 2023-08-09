@@ -66,7 +66,7 @@ if(isset($_GET['delete_all'])){
             while($fetch_cart = mysqli_fetch_assoc($select_cart)){   
       ?>
       <div class="box">
-         <a href="cart-notify.php?delete=<?php echo $fetch_cart['ord_id']; ?>" class="fas fa-times" onclick="return confirm('delete this from cart?');"></a>
+         <a href="cart-notify.php?delete=<?php echo $fetch_cart['ord_id']; ?>" class="fas fa-times" onclick="return confirm('Xoá khỏi giỏ hàng?');"></a>
          <img src="admin/adimn-img/<?php echo $fetch_cart['prd_image']; ?>" alt="">
          <div class="name"><?php echo $fetch_cart['prd_name']; ?></div>
          <div class="price"><?php echo $fetch_cart['prd_price']; ?> VNĐ</div>
