@@ -87,7 +87,7 @@ if(isset($_GET['delete_all'])){
    </div>
 
    <div style="margin-top: 2rem; text-align:center;">
-      <a href="cart-notify.php?delete_all" class="delete-btn <?php echo ($grand_total > 1)?'':'disabled'; ?>" onclick="return confirm('delete all from cart?');">Xoá tất cả</a>
+      <a href="cart-notify.php?delete_all" class="delete-btn <?php echo ($grand_total > 1)?'':'disabled'; ?>" onclick="return confirm('Xoá tất cả khỏi giỏ hàng?');">Xoá tất cả</a>
    </div>
 
    <div class="cart-total">
