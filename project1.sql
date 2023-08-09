@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th8 09, 2023 lúc 08:09 AM
+-- Thời gian đã tạo: Th8 09, 2023 lúc 08:25 AM
 -- Phiên bản máy phục vụ: 10.4.27-MariaDB
 -- Phiên bản PHP: 8.2.0
 
@@ -252,7 +252,8 @@ ALTER TABLE `tbl_order_detail`
 --
 ALTER TABLE `tbl_product`
   ADD PRIMARY KEY (`prd_id`),
-  ADD KEY `'cate_id'` (`cate_id`);
+  ADD KEY `'cate_id'` (`cate_id`),
+  ADD KEY `'pubc_id'` (`pubc_id`);
 
 --
 -- Chỉ mục cho bảng `tbl_pubc`
@@ -334,7 +335,8 @@ ALTER TABLE `tbl_order_detail`
 -- Các ràng buộc cho bảng `tbl_product`
 --
 ALTER TABLE `tbl_product`
-  ADD CONSTRAINT `'cate_id'` FOREIGN KEY (`cate_id`) REFERENCES `tbl_category` (`cate_id`);
+  ADD CONSTRAINT `'cate_id'` FOREIGN KEY (`cate_id`) REFERENCES `tbl_category` (`cate_id`),
+  ADD CONSTRAINT `'pubc_id'` FOREIGN KEY (`pubc_id`) REFERENCES `tbl_pubc` (`pubc_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
