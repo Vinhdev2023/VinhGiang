@@ -57,10 +57,10 @@ include 'masteradmin/mainproduct.php';
             </tbody>
         </table>
         <form action="" method="post">
-        <label for="">Có gỡ bỏ không</label>
-                <button type="submit" name="sbm" class="btn btn-danger">Có</button>
-                <button type="submit" name="nosbm" class="btn btn-warning">Không</button>
-                <a href="product.php" class="btn btn-light">Về trang cũ</a>
+        <label for="">Xác nhận: </label>
+                <button type="submit" name="sbm" class="btn btn-danger">Xoá</button>
+                <!-- <button type="submit" name="nosbm" class="btn btn-warning">Không</button> -->
+                <a href="product.php" class="btn btn-warning">Trở về</a>
         </form>
     </div>
 <?php
