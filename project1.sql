@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th8 02, 2023 lúc 01:21 PM
+-- Thời gian đã tạo: Th8 09, 2023 lúc 08:09 AM
 -- Phiên bản máy phục vụ: 10.4.27-MariaDB
 -- Phiên bản PHP: 8.2.0
 
@@ -29,6 +29,7 @@ USE `project1`;
 -- Cấu trúc bảng cho bảng `tbl_category`
 --
 
+DROP TABLE IF EXISTS `tbl_category`;
 CREATE TABLE `tbl_category` (
   `cate_id` int(11) NOT NULL,
   `cate_name` varchar(255) NOT NULL
@@ -50,6 +51,7 @@ INSERT INTO `tbl_category` (`cate_id`, `cate_name`) VALUES
 -- Cấu trúc bảng cho bảng `tbl_custommer`
 --
 
+DROP TABLE IF EXISTS `tbl_custommer`;
 CREATE TABLE `tbl_custommer` (
   `cus_id` int(11) NOT NULL,
   `cus_username` varchar(255) NOT NULL,
@@ -64,7 +66,8 @@ CREATE TABLE `tbl_custommer` (
 --
 
 INSERT INTO `tbl_custommer` (`cus_id`, `cus_username`, `cus_pass`, `cus_address`, `cus_phone`, `cus_message`) VALUES
-(1, 'vinhmoi', '202cb962ac59075b964b07152d234b70', 'daothanhvinh2004@gmail.com', '0982660369', '');
+(1, 'vinhmoi', '202cb962ac59075b964b07152d234b70', 'daothanhvinh2004@gmail.com', '0982660369', ''),
+(2, 'vinh', '202cb962ac59075b964b07152d234b70', 'dttd6024@gmail.com', '', NULL);
 
 -- --------------------------------------------------------
 
@@ -72,6 +75,7 @@ INSERT INTO `tbl_custommer` (`cus_id`, `cus_username`, `cus_pass`, `cus_address`
 -- Cấu trúc bảng cho bảng `tbl_orders`
 --
 
+DROP TABLE IF EXISTS `tbl_orders`;
 CREATE TABLE `tbl_orders` (
   `ord_id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
@@ -79,8 +83,19 @@ CREATE TABLE `tbl_orders` (
   `prd_name` varchar(255) NOT NULL,
   `prd_price` int(11) NOT NULL,
   `prd_quantity` int(11) NOT NULL,
-  `prd_image` varchar(6000) NOT NULL
+  `prd_image` varchar(6000) NOT NULL,
+  `cart_satus` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `tbl_orders`
+--
+
+INSERT INTO `tbl_orders` (`ord_id`, `customer_id`, `staff_id`, `prd_name`, `prd_price`, `prd_quantity`, `prd_image`, `cart_satus`) VALUES
+(72, 1, 2, 'Detective conan vol 100', 100000, 1, '100---db_a84b9c5d7d2e47d09bfc246d7b94ea30_master.jpg', 'ordered'),
+(73, 1, 2, 'harry protter 7 bộ', 100000, 2, 'harry-post-ter.jpg', 'ordered'),
+(75, 1, 2, 'Yêu trên từng ngón tay', 150000, 1, 'img2.jpg', 'ordered'),
+(76, 2, 2, 'Detective conan vol 100', 100000, 1, '100---db_a84b9c5d7d2e47d09bfc246d7b94ea30_master.jpg', 'ordered');
 
 -- --------------------------------------------------------
 
@@ -88,6 +103,7 @@ CREATE TABLE `tbl_orders` (
 -- Cấu trúc bảng cho bảng `tbl_order_detail`
 --
 
+DROP TABLE IF EXISTS `tbl_order_detail`;
 CREATE TABLE `tbl_order_detail` (
   `ordd_id` int(11) NOT NULL,
   `cus_id` int(11) NOT NULL,
@@ -101,8 +117,19 @@ CREATE TABLE `tbl_order_detail` (
   `prd_name` varchar(255) NOT NULL,
   `prd_quantity` int(255) NOT NULL,
   `total_price` int(100) NOT NULL,
-  `placed_on` varchar(255) NOT NULL
+  `placed_on` varchar(255) NOT NULL,
+  `payment_status` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `tbl_order_detail`
+--
+
+INSERT INTO `tbl_order_detail` (`ordd_id`, `cus_id`, `cus_name`, `cus_number`, `cus_email`, `cus_method`, `cus_address`, `total_products`, `prd_id`, `prd_name`, `prd_quantity`, `total_price`, `placed_on`, `payment_status`) VALUES
+(72, 1, 'Đào Thành Vinh', 982660369, 'daothanhvinh2004@gmail.com', 'Tiền mặt', 'flat no. , CT6, Trần Điền, Hà Nội, Việt Nam - 117117', 'Detective conan vol 100 (1) ', 1, 'Detective conan vol 100', 1, 100000, '07-Aug-2023 15:32:39', 'pending'),
+(73, 1, 'Đào Thành Vinh', 982660369, 'daothanhvinh2004@gmail.com', 'Tiền mặt', 'flat no. , CT6, Trần Điền, Hà Nội, Việt Nam - 117117', 'harry protter 7 bộ (2) ', 2, 'harry protter 7 bộ', 2, 200000, '07-Aug-2023 15:32:39', 'pending'),
+(75, 1, 'Đào Thành Vinh', 982660369, 'daothanhvinh2004@gmail.com', 'Tiền mặt', 'flat no. , CT6, Trần Điền, Hà Nội, Việt Nam - 117117', 'Yêu trên từng ngón tay (1) ', 3, 'Yêu trên từng ngón tay', 1, 150000, '07-Aug-2023 15:33:18', 'pending'),
+(76, 2, 'Đào Thành Vinh', 982660369, 'dttd6024@gmail.com', 'Tiền mặt', 'flat no. , CT6, Trần Điền, Hà Nội, Việt Nam - 117117', 'Detective conan vol 100 (1) ', 1, 'Detective conan vol 100', 1, 100000, '08-Aug-2023 22:07:39', 'pending');
 
 -- --------------------------------------------------------
 
@@ -110,6 +137,7 @@ CREATE TABLE `tbl_order_detail` (
 -- Cấu trúc bảng cho bảng `tbl_product`
 --
 
+DROP TABLE IF EXISTS `tbl_product`;
 CREATE TABLE `tbl_product` (
   `prd_id` int(11) NOT NULL,
   `prd_name` varchar(255) NOT NULL,
@@ -126,15 +154,20 @@ CREATE TABLE `tbl_product` (
 --
 
 INSERT INTO `tbl_product` (`prd_id`, `prd_name`, `prd_price`, `prd_quantity`, `prd_image`, `cate_id`, `prd_description`, `pubc_id`) VALUES
-(1, 'Detective conan vol 100', '100000', 100, '100---db_a84b9c5d7d2e47d09bfc246d7b94ea30_master.jpg', 1, '<p>conan tập 100</p>\r\n', 1),
-(2, 'harry protter 7 bộ', '100000', 97, 'harry-post-ter.jpg', 3, '<p>fdha</p>\r\n', 2),
-(3, 'Yêu trên từng ngón tay', '150000', 199, 'img2.jpg', 3, '<p>của</p>\r\n', 1),
+(1, 'Detective conan vol 100', '100000', 94, '100---db_a84b9c5d7d2e47d09bfc246d7b94ea30_master.jpg', 1, '<p>conan tập 100</p>\r\n', 1),
+(2, 'harry protter 7 bộ', '100000', 95, 'harry-post-ter.jpg', 3, '', 2),
+(3, 'Yêu trên từng ngón tay', '150000', 198, 'img2.jpg', 3, '<p>của</p>\r\n', 1),
 (4, 'Vì em gặp anh', '120000', 1230, 'img3.jpg', 1, '', 6),
 (5, 'Từ bến sông nhùng', '1500000', 100, 'img4.jpg', 3, '<p>của: Phạm Quốc To&agrave;n</p>\r\n', 6),
 (123, '5 Centimet trên giây', '100000', 100, 'img5.jpg', 2, '<p>Của Shinkai Makoto</p>\r\n', 1),
-(127, 'Nói nhiều, làm ít', '100000', 100, 'img8.jpg', 1, '<p>sdas</p>\r\n', 6),
-(1211, 'Người phụ nữ đằng sau ống kính', '130000', 100, 'img7.jpg', 3, '<p>asd</p>\r\n', 1),
-(1212, 'Liên hoa yêu cốt', '100000', 100, 'img6.jpg', 4, '', 8);
+(127, 'Nói nhiều, làm ít', '100000', 100, 'img8.jpg', 1, '', 6),
+(1211, 'Người phụ nữ đằng sau ống kính', '130000', 100, 'img7.jpg', 3, '', 1),
+(1212, 'Liên hoa yêu cốt', '100000', 100, 'img6.jpg', 4, '', 8),
+(1213, 'Đắc nhân tâm', '100000', 100, 'dac-nhan-tam-116541.jpg', 3, '<p>Dale Carnegie</p>\r\n', 3),
+(1214, 'Black Jack', '100000', 100, 'blackjack.jpg', 3, '<p><strong>TEZUKA OSAMU</strong></p>\r\n', 3),
+(1215, 'Spy x Family', '100000', 100, 'spy-x-family-tap-4.jpg', 1, '<p>Tatsuya ENDO</p>\r\n', 1),
+(1216, 'doremon', '100000', 100, 'doremon.jpg', 1, '<p>Fujiko F Fujio</p>\r\n', 1),
+(1217, 'ALICE in borderland', '100000', 100, 'aliceinborderlands.jpg', 1, '<p>Haro ASO</p>\r\n', 3);
 
 -- --------------------------------------------------------
 
@@ -142,6 +175,7 @@ INSERT INTO `tbl_product` (`prd_id`, `prd_name`, `prd_price`, `prd_quantity`, `p
 -- Cấu trúc bảng cho bảng `tbl_pubc`
 --
 
+DROP TABLE IF EXISTS `tbl_pubc`;
 CREATE TABLE `tbl_pubc` (
   `pubc_id` int(11) NOT NULL,
   `pubc_name` varchar(1000) NOT NULL
@@ -165,6 +199,7 @@ INSERT INTO `tbl_pubc` (`pubc_id`, `pubc_name`) VALUES
 -- Cấu trúc bảng cho bảng `tbl_user`
 --
 
+DROP TABLE IF EXISTS `tbl_user`;
 CREATE TABLE `tbl_user` (
   `user_id` int(11) NOT NULL,
   `username` varchar(255) NOT NULL,
@@ -239,31 +274,31 @@ ALTER TABLE `tbl_user`
 -- AUTO_INCREMENT cho bảng `tbl_category`
 --
 ALTER TABLE `tbl_category`
-  MODIFY `cate_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `cate_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_custommer`
 --
 ALTER TABLE `tbl_custommer`
-  MODIFY `cus_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `cus_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_orders`
 --
 ALTER TABLE `tbl_orders`
-  MODIFY `ord_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `ord_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_order_detail`
 --
 ALTER TABLE `tbl_order_detail`
-  MODIFY `ordd_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `ordd_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_product`
 --
 ALTER TABLE `tbl_product`
-  MODIFY `prd_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1213;
+  MODIFY `prd_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1218;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_pubc`
