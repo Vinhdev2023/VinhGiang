@@ -25,7 +25,7 @@ $per_row = ($page * $row_per_page) - $row_per_page;
                 <input type="hidden" name="product_name" value="<?php echo $fetch_products['prd_name']; ?>">
                 <input type="hidden" name="product_price" value="<?php echo $fetch_products['prd_price']; ?>">
                 <input type="hidden" name="product_image" value="<?php echo $fetch_products['prd_image']; ?>">
-                <input type="submit" value="add to cart" name="add_to_cart" class="btn">
+                <input type="submit" value="Thêm vào giỏ" name="add_to_cart" class="btn">
             </form>
     <?php
         }
