@@ -45,10 +45,10 @@ include 'masteradmin/mainpubc.php';
         </tbody>
     </table>
     <form action="" method="post">
-        <label for="" style="font-size: 30px;">Có xóa Không: </label>
-        <button type="submit" name="sbm" class="btn btn-danger">Có</button>
-        <button type="submit" name="nosbm" class="btn btn-warning">Không</button>
-        <a href="pubc.php" class="btn btn-light">Về trang cũ</a>
+        <label for="" style="font-size: 30px;">Xác nhận: </label>
+        <button type="submit" name="sbm" class="btn btn-danger">Xoá</button>
+        <!-- <button type="submit" name="nosbm" class="btn btn-warning">Không</button> -->
+        <a href="pubc.php" class="btn btn-warning">Trở về</a>
     </form>
 </div>
 <?php
