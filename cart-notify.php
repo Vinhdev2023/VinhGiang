@@ -56,7 +56,7 @@ if(isset($_GET['delete_all'])){
 
 <section class="shopping-cart">
 
-   <h1 class="title">Sản phẩm được đặt thêm</h1>
+   <h1 class="title">Sản phẩm được đặt</h1>
 
    <div class="box-container">
       <?php
