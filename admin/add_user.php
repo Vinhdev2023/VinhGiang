@@ -83,7 +83,7 @@ include 'masteradmin/mainmember.php';
 
 
         <button type="submit" class="btn btn-success" name="sbm">Thêm thành viên</button>
-        <a href="user.php" class="btn btn-light">Về trang trước</a>
+        <a href="user.php" class="btn btn-warning">Về trang trước</a>
     </form>
 
 
