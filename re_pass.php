@@ -6,7 +6,7 @@ session_start();
 
 if (isset($_POST['submit'])) {
     $email = mysqli_real_escape_string($conn, $_POST['email']);
-    $pass = mysqli_real_escape_string($conn, md5('12345'));
+    $pass = mysqli_real_escape_string($conn, md5('12345678'));
 
     $select_users = mysqli_query($conn, "SELECT * FROM tbl_custommer WHERE cus_address = '$email'") or die('query failed');
 
@@ -18,7 +18,7 @@ if (isset($_POST['submit'])) {
         // $_SESSION['user_email'] = $row['cus_address'];
         // $_SESSION['user_id'] = $row['cus_id'];
         // header('location:login.php');
-        $message[] = 'Mật khẩu là 12345!';
+        $message[] = 'Mật khẩu là 12345678!';
     } else {
         $message[] = 'Sai email!';
     }
