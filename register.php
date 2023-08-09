@@ -68,7 +68,7 @@ if (isset($_POST['submit'])) {
             <i class="fa-solid fa-user fa-lg" id="icon-people"></i>
             <input type="text" name="name" placeholder="Nhập tên của bạn" required class="box">
             <input type="email" name="email" placeholder="Nhập email của bạn" required class="box">
-            <input type="password" name="password" placeholder="Nhập mật khẩu của bạn" required class="box">
+            <input type="password" name="password" minlength="8" placeholder="Nhập mật khẩu của bạn" required class="box">
             <input type="password" name="cpassword" placeholder="Xác nhận mật khẩu của bạn" required class="box">
             <!-- <select name="user_type" class="box">
                 <option value="user">Người dùng</option>
