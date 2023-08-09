@@ -56,7 +56,7 @@ if(isset($_POST['send'])){
 
 <div class="heading">
    <h3>Liên hệ với chúng tôi</h3>
-   <p> <a href="home.php">Trang Chủ</a> / Liên Hệ </p>
+   <p> <a href="index.php">Trang Chủ</a> / Liên Hệ </p>
 </div>
 
 <section class="contact">
