@@ -73,9 +73,9 @@ if(isset($_GET['delete_all'])){
          <form action="" method="post">
             <input type="hidden" name="cart_id" value="<?php echo $fetch_cart['ord_id']; ?>">
             <input type="number" min="1" name="cart_quantity" value="<?php echo $fetch_cart['prd_quantity']; ?>">
-            <input type="submit" name="update_cart" value="update" class="option-btn">
+            <input type="submit" name="update_cart" value="Cập nhật" class="option-btn">
          </form>
-         <div class="sub-total"> sub total : <span><?php echo $sub_total = ($fetch_cart['prd_quantity'] * $fetch_cart['prd_price']); ?> VNĐ</span> </div>
+         <div class="sub-total"> Tổng cộng : <span><?php echo $sub_total = ($fetch_cart['prd_quantity'] * $fetch_cart['prd_price']); ?> VNĐ</span> </div>
       </div>
       <?php
       $grand_total += $sub_total;
