@@ -53,7 +53,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
                 <input type="username" name="username" placeholder="nhập tên tài khoản của bạn" required class="box">
                 <input type="password" name="password" placeholder="nhập mật khẩu của bạn" required class="box">
                 <input type="submit" name="sbm" class="btn">
-                <p>Về trang <a href="../index.php">Web cũ</a></p>
+                <p>Về trang <a href="../index.php">Web chính</a></p>
 
             </form>
 
