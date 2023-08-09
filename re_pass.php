@@ -67,7 +67,7 @@ if (isset($_POST['submit'])) {
             <input type="email" name="email" placeholder="Nhập email của bạn" required class="box">
             <input type="submit" name="submit" value="Lấy lại tài khoản" class="btn">
             <p>Chưa có tài khoản? <a href="register.php">Đăng Ký ngay bây giờ</a></p>
-            <p>Lấy lại tài khoản thành công? <a href="login.php">Đăng Nhập ngay bây giờ</a></p>
+            <p>Lấy lại tài khoản thành công? <a href="login.php">Đăng Nhập</a></p>
         </form>
 
 
