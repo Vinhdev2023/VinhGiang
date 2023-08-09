@@ -46,8 +46,8 @@ include 'masteradmin/maincategory.php';
             <input id="cate_name" name="cate_name" type="text" class="form-control" placeholder="tên danh mục" aria-label="tên danh mục" aria-describedby="basic-addon1">
         </div>
         <button type="submit" class="btn btn-success" name="sbm">Thêm danh mục</button>
-        <button type="submit" class="btn btn-warning" name="reset">Sửa lại</button>
-        <a href="category.php" class="btn btn-light">Về trang cũ</a>
+        <!-- <button type="submit" class="btn btn-warning" name="reset">Sửa lại</button> -->
+        <a href="category.php" class="btn btn-warning">Trở về</a>
     </form>
 </div>
 <?php
