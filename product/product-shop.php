@@ -67,7 +67,7 @@ $per_row = ($page * $row_per_page) - $row_per_page;
             }
             for (; $page <= $show_page; $page++) {
             ?>
-                <li><a href="shop.php?page=<?php echo $page; ?>" class="btn btn-outline-danger"><?php echo $page; ?></a></li>
+                <li><a href="shop.php?page=<?php echo $page; ?>" class="btn"><?php echo $page; ?></a></li>
             <?php
             }
             ?>
@@ -76,6 +76,6 @@ $per_row = ($page * $row_per_page) - $row_per_page;
                                         } else {
                                             $control_next_page++;
                                         }
-                                        echo $control_next_page; ?>" class="btn btn-outline-danger"> > </a></li>
+                                        echo $control_next_page; ?>" class="btn"> > </a></li>
         </ul>
     </div>
