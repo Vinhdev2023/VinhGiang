@@ -53,10 +53,10 @@ include 'masteradmin/mainpubc.php';
             <span class="input-group-text" id="basic-addon1">tên</span>
             <input type="text" id="pubc_name" name="pubc_name" class="form-control" placeholder="Nick name" aria-label="Nick name" aria-describedby="basic-addon1" value="<?php echo $row["pubc_name"]; } ?>">
         </div>
-        <label for="">Có cập nhật không</label>
-        <button type="submit" name="sbm" class="btn btn-danger">Có</button>
-        <button type="submit" name="nosbm" class="btn btn-warning">Không</button>
-        <a href="pubc.php" class="btn btn-light">Về trang cũ</a>
+        <label for="">Xác nhận: </label>
+        <button type="submit" name="sbm" class="btn btn-danger">Cập nhật</button>
+        <!-- <button type="submit" name="nosbm" class="btn btn-warning">Không</button> -->
+        <a href="pubc.php" class="btn btn-warning">Trở về</a>
     </form>
 <?php
 include 'masteradmin/footer.php';
