@@ -70,7 +70,7 @@ include 'masteradmin/mainmember.php';
         <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">Quyền</span>
             <select class="form-select" id="user_level" name="user_level" aria-label="Default select example">
-                <option value="0" selected>Cấp Độ Quền Hạn</option>
+                <option value="0" selected>Cấp Độ Quyền Hạn</option>
                 <option value="1">Admin</option>
                 <option value="2">Nhân Viên</option>
                 <!-- <option value="3"></option> -->
@@ -83,7 +83,7 @@ include 'masteradmin/mainmember.php';
 
 
         <button type="submit" class="btn btn-success" name="sbm">Thêm thành viên</button>
-        <a href="user.php" class="btn btn-light">Về trang cũ</a>
+        <a href="user.php" class="btn btn-light">Về trang trước</a>
     </form>
 
 
