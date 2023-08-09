@@ -50,7 +50,7 @@ if (isset($_POST['add_to_cart'])) {
 
         <div class="content">
             <h3>Bạn cô đơn ư? Đừng lo lắng. Mọi cuốn sách đều sẵn sàng kết thân với bạn!</h3>
-            <a href="#" class="white-btn">Khám Phá Thêm</a>
+            <a href="about.php" class="white-btn">Khám Phá Thêm</a>
         </div>
 
     </section>
