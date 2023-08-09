@@ -54,10 +54,10 @@ if (isset($_GET["cate_id"])) {
             <span class="input-group-text" id="basic-addon1">tên</span>
             <input type="text" id="cate_name" name="cate_name" class="form-control" placeholder="Nick name" aria-label="Nick name" aria-describedby="basic-addon1" value="<?php echo $row["cate_name"]; }} ?>">
         </div>
-        <label for="">Có cập nhật không</label>
-        <button type="submit" name="sbm" class="btn btn-danger">Có</button>
-        <button type="submit" name="nosbm" class="btn btn-warning">Không</button>
-        <a href="category.php" class="btn btn-light">Về trang cũ</a>
+        <label for="">Xác nhận: </label>
+        <button type="submit" name="sbm" class="btn btn-danger">Cập nhật</button>
+        <!-- <button type="submit" name="nosbm" class="btn btn-warning">Không</button> -->
+        <a href="category.php" class="btn btn-warning">Trở về</a>
     </form>
 
 </div>
