@@ -103,10 +103,10 @@ CKEDITOR.replace('prd_description');
                 } ?>
             </select>
         </div>
-        <label for="">Có Thêm không: </label>
-        <button type="submit" name="sbm" class="btn btn-danger">Có</button>
-        <button type="submit" name="nosbm" class="btn btn-warning">Không</button>
-        <a href="product.php" class="btn btn-light">Về trang cũ</a>
+        <label for="">Xác nhận: </label>
+        <button type="submit" name="sbm" class="btn btn-danger">Thêm</button>
+        <!-- <button type="submit" name="nosbm" class="btn btn-warning">Trở về</button> -->
+        <a href="product.php" class="btn btn-warning">Trở về</a>
     </form>
 </div>
 <?php
