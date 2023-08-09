@@ -4,8 +4,29 @@ include 'masteradmin/config.php';
 $placed_on = $_GET['time'];
 $cus_id = $_GET['cus_id'];
 
-if (isset($_POST['completed'])) {
-    $check_payment = mysqli_num_rows(mysqli_query($connect, "SELECT * FROM tbl_order_detail WHERE placed_on = '$placed_on' AND cus_id = '$cus_id' AND payment_status = 'complete'"));
+if (isset($_POST['wait_for_confirmation'])) {
+    $check_payment = mysqli_num_rows(mysqli_query($connect, "SELECT * FROM tbl_order_detail WHERE placed_on = '$placed_on' AND cus_id = '$cus_id' AND payment_status = 'đang chờ xác nhận'"));
+    if ($check_payment == 0) {
+        $completed = mysqli_query($connect, "SELECT * FROM tbl_order_detail WHERE placed_on = '$placed_on' AND cus_id = '$cus_id'");
+        while ($row = mysqli_fetch_array($completed)) {
+            $id = $row['ordd_id'];
+            $prd_id = $row['prd_id'];
+            $prd_quantity_ord = $row['prd_quantity'];
+            number_format($prd_quantity_ord);
+            $select_prd = mysqli_query($connect, "SELECT * FROM tbl_product WHERE prd_id = $prd_id");
+            while ($item = mysqli_fetch_array($select_prd)) {
+                $prd_quantity_in = $item['prd_quantity'];
+                number_format($prd_quantity_in);
+            }
+            $prd_quantity = $prd_quantity_in + $prd_quantity_ord;
+            mysqli_query($connect, "UPDATE tbl_product SET prd_quantity = $prd_quantity WHERE prd_id = $prd_id");
+            mysqli_query($connect, "UPDATE tbl_order_detail SET payment_status = 'đang chờ xác nhận' WHERE ordd_id = $id");
+        }
+    }
+}
+
+if (isset($_POST['confirmed'])) {
+    $check_payment = mysqli_num_rows(mysqli_query($connect, "SELECT * FROM tbl_order_detail WHERE placed_on = '$placed_on' AND cus_id = '$cus_id' AND payment_status = 'đã xác nhận' OR payment_status = 'thành công'"));
     if ($check_payment == 0) {
         $completed = mysqli_query($connect, "SELECT * FROM tbl_order_detail WHERE placed_on = '$placed_on' AND cus_id = '$cus_id'");
         while ($row = mysqli_fetch_array($completed)) {
@@ -20,13 +41,19 @@ if (isset($_POST['completed'])) {
             }
             $prd_quantity = $prd_quantity_in - $prd_quantity_ord;
             mysqli_query($connect, "UPDATE tbl_product SET prd_quantity = $prd_quantity WHERE prd_id = $prd_id");
-            mysqli_query($connect, "UPDATE tbl_order_detail SET payment_status = 'completed' WHERE ordd_id = $id");
+            mysqli_query($connect, "UPDATE tbl_order_detail SET payment_status = 'đã xác nhận' WHERE ordd_id = $id");
+        }
+    }else {
+        $pending = mysqli_query($connect, "SELECT * FROM tbl_order_detail WHERE placed_on = '$placed_on' AND cus_id = '$cus_id'");
+        while ($row = mysqli_fetch_array($pending)) {
+            $id = $row['ordd_id'];
+            mysqli_query($connect, "UPDATE tbl_order_detail SET payment_status = 'đã xác nhận' WHERE ordd_id = $id");
         }
     }
 }
 
-if (isset($_POST['pending'])) {
-    $check_payment = mysqli_num_rows(mysqli_query($connect, "SELECT * FROM tbl_order_detail WHERE placed_on = '$placed_on' AND cus_id = '$cus_id' AND payment_status = 'pending'"));
+if (isset($_POST['success'])) {
+    $check_payment = mysqli_num_rows(mysqli_query($connect, "SELECT * FROM tbl_order_detail WHERE placed_on = '$placed_on' AND cus_id = '$cus_id' AND payment_status = 'thành công' OR payment_status = 'đã xác nhận'"));
     if ($check_payment == 0) {
         $pending = mysqli_query($connect, "SELECT * FROM tbl_order_detail WHERE placed_on = '$placed_on' AND cus_id = '$cus_id'");
         while ($row = mysqli_fetch_array($pending)) {
@@ -39,9 +66,15 @@ if (isset($_POST['pending'])) {
                 $prd_quantity_in = $item['prd_quantity'];
                 number_format($prd_quantity_in);
             }
-            $prd_quantity = $prd_quantity_in + $prd_quantity_ord;
+            $prd_quantity = $prd_quantity_in - $prd_quantity_ord;
             mysqli_query($connect, "UPDATE tbl_product SET prd_quantity = $prd_quantity WHERE prd_id = $prd_id");
-            mysqli_query($connect, "UPDATE tbl_order_detail SET payment_status = 'pending' WHERE ordd_id = $id");
+            mysqli_query($connect, "UPDATE tbl_order_detail SET payment_status = 'thành công' WHERE ordd_id = $id");
+        }
+    }else {
+        $pending = mysqli_query($connect, "SELECT * FROM tbl_order_detail WHERE placed_on = '$placed_on' AND cus_id = '$cus_id'");
+        while ($row = mysqli_fetch_array($pending)) {
+            $id = $row['ordd_id'];
+            mysqli_query($connect, "UPDATE tbl_order_detail SET payment_status = 'thành công' WHERE ordd_id = $id");
         }
     }
 }
@@ -52,8 +85,8 @@ if (isset($_POST['delete'])) {
         $id = $row['ordd_id'];
         mysqli_query($connect, "DELETE FROM tbl_order_detail WHERE ordd_id = $id");
         mysqli_query($connect, "DELETE FROM tbl_orders WHERE ord_id = $id");
-        header('location:order.php');
     }
+    header('location:order.php');
 }
 
 include 'masteradmin/mainorder.php';
@@ -130,9 +163,12 @@ include 'masteradmin/mainorder.php';
                     $query = mysqli_query($connect, "SELECT DISTINCT payment_status FROM tbl_order_detail WHERE placed_on = '$placed_on' AND cus_id = '$cus_id'");
                     while ($item = mysqli_fetch_array($query)) {
                     ?>
-                        <p>Trạng thái: <?php if ($item["payment_status"] == 'pending') {
+                        <p>Trạng thái: <?php if ($item["payment_status"] == 'đang chờ xác nhận') {
                                             echo '<span class="btn btn-danger">' . $item["payment_status"] . '</span>';
-                                        } else {
+                                        } elseif ($item["payment_status"] == 'đã xác nhận') {
+                                            echo '<span class="btn btn-warning">' . $item["payment_status"] . '</span>';
+                                        }
+                                        else {
                                             echo '<span class="btn btn-success">' . $item["payment_status"] . '</span>';
                                         } ?></p>
                     <?php
@@ -143,8 +179,9 @@ include 'masteradmin/mainorder.php';
         </tbody>
     </table>
     <form action="" method="post">
-        <button class="btn btn-warning" name="completed">Hoàn Thành</button>
-        <button class="btn btn-warning" name="pending">Chưa hoàn thành</button>
+        <button class="btn btn-warning" name="wait_for_confirmation">Chờ xác nhận</button>
+        <button class="btn btn-warning" name="confirmed">Đã xác nhận</button>
+        <button class="btn btn-warning" name="success">Thành công</button>
         <button class="btn btn-danger" name="delete">Xóa Đơn</button>
         <a href="order.php" class="btn btn-light">trở về</a>
     </form>

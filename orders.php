@@ -76,7 +76,13 @@ if(!isset($user_id)){
          <p> Tổng giá : <span><?php while ($fetch_orders = mysqli_fetch_array($total_price_ord_query)) {
          echo $fetch_orders['total_price'];} ?> VNĐ</span> </p>
          <p> Trạng thái : <span style="color:<?php while ($fetch_orders = mysqli_fetch_array($payment_status_ord_query)) {
-         if($fetch_orders['payment_status'] == 'pending'){ echo 'red'; }else{ echo 'green'; } ?>;"><?php echo $fetch_orders['payment_status'];} ?></span> </p>
+         if ($fetch_orders["payment_status"] == 'đang chờ xác nhận') {
+            echo 'red';
+        } elseif ($fetch_orders["payment_status"] == 'đã xác nhận') {
+            echo 'yellow';
+        } else {
+            echo 'green';
+        } ?>;"><?php echo $fetch_orders['payment_status'];} ?></span> </p>
          </div>
       <?php
                }}

@@ -50,10 +50,13 @@ include 'masteradmin/mainorder.php';
                     <!-- <td><?php  echo $row["total_price"]; ?> VNĐ</td> -->
                     <td><?php echo $row["placed_on"]; ?></td>
                     <td><?php
-                    if ($row["payment_status"] == 'pending') {
-                        echo '<p class="btn btn-danger">'.$row["payment_status"].'</p>';
-                    }else{
-                        echo '<p class="btn btn-success">'.$row["payment_status"].'</p>';
+                    if ($row["payment_status"] == 'đang chờ xác nhận') {
+                        echo '<span class="btn btn-danger">' . $row["payment_status"] . '</span>';
+                    } elseif ($row["payment_status"] == 'đã xác nhận') {
+                        echo '<span class="btn btn-warning">' . $row["payment_status"] . '</span>';
+                    }
+                    else {
+                        echo '<span class="btn btn-success">' . $row["payment_status"] . '</span>';
                     }
                     ?></td>
                     <td><a href="complete_order.php?time=<?php echo $row["placed_on"]; ?>&cus_id=<?php echo $row["cus_id"]; ?>" class="btn btn-warning" type="submit" name="repair">Chi tiết</a></td>

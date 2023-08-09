@@ -47,7 +47,7 @@ if (isset($_POST['order_btn'])) {
          if ($sub_total == 0) {
             $message[] = 'Giỏ hàng của bạn chưa có sản phẩm nào!';
          } else {
-            mysqli_query($conn, "INSERT INTO `tbl_order_detail`(ordd_id, cus_id, cus_name, cus_number, cus_email, cus_method, cus_address, total_products, prd_id,prd_name, prd_quantity, total_price, placed_on, payment_status) VALUES($ord_id,'$user_id', '$name', '$number', '$email', '$method', '$address', '$cart_products','$prd_id','$prd_name', $prd_quantity, '$sub_total', '$placed_on', 'pending')") or die('query failed');
+            mysqli_query($conn, "INSERT INTO `tbl_order_detail`(ordd_id, cus_id, cus_name, cus_number, cus_email, cus_method, cus_address, total_products, prd_id,prd_name, prd_quantity, total_price, placed_on, payment_status) VALUES($ord_id,'$user_id', '$name', '$number', '$email', '$method', '$address', '$cart_products','$prd_id','$prd_name', $prd_quantity, '$sub_total', '$placed_on', 'đang chờ xác nhận')") or die('query failed');
                $message[] = 'Đơn hàng đặt thành công!';
                mysqli_query($conn, "UPDATE `tbl_orders` SET cart_satus = 'ordered' WHERE customer_id = '$user_id' AND cart_satus = 'ordering'") or die('query failed');
                header('location: orders.php');
