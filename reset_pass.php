@@ -28,7 +28,7 @@ if (isset($_POST['submit'])) {
     } else {
         $message[] = 'Sai mật khẩu cũ hoặc sai xác nhận mật khẩu!';
     }
-
+}
 ?>
 
 <!DOCTYPE html>
