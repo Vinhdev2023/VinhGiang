@@ -24,7 +24,7 @@ if (isset($_POST['add_to_cart'])) {
         mysqli_query($conn, "INSERT INTO `tbl_orders`(customer_id, staff_id, prd_name, prd_price, prd_quantity, prd_image, cart_satus) VALUES('$user_id', '2', '$product_name', '$product_price', '$product_quantity', '$product_image', 'ordering')") or die('query failed');
         $message[] = 'Sản phẩm được thêm vào giỏ!';
     } else {
-        // header('location: login.php');
+        header('location: login.php');
     }
 }
 ?>
