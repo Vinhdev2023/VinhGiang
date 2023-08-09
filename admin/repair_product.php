@@ -145,10 +145,10 @@ if (isset($_GET["prd_id"])) {
 
 
 
-            <label for="">Có cập nhật không</label>
-            <button type="submit" name="sbm" class="btn btn-danger">Có</button>
-            <button type="submit" name="nosbm" class="btn btn-warning">Không</button>
-            <a href="product.php" class="btn btn-light">Về trang cũ</a>
+            <label for="">Xác nhận: </label>
+            <button type="submit" name="sbm" class="btn btn-danger">Cập nhật</button>
+            <!-- <button type="submit" name="nosbm" class="btn btn-warning">Không</button> -->
+            <a href="product.php" class="btn btn-warning">Trở về</a>
         </form>
         <!-- <a href="add_product.php" class="btn btn-success">Thêm sản phẩm mới</a> -->
     </div>
