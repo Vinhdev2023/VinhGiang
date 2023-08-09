@@ -62,8 +62,8 @@ if (isset($message)) {
             <?php if (isset($user_id)) { ?>
 
                 <div class="user-box">
-                    <p>username : <span><?php echo $_SESSION['user_name']; ?></span></p>
-                    <p>email : <span><?php echo $_SESSION['user_email']; ?></span></p>
+                    <p>Tên : <span><?php echo $_SESSION['user_name']; ?></span></p>
+                    <p>Email : <span><?php echo $_SESSION['user_email']; ?></span></p>
                     <p><a href="logout.php" class="delete-btn">Đăng xuất</a></p>
                     <p><a href="reset_pass.php" class="delete-btn">Đổi mật khẩu</a></p>
                 </div>
