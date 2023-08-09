@@ -26,7 +26,7 @@ if (isset($_POST['submit'])) {
         // header('location:login.php');
         $message[] = 'Đổi mật khẩu thành công!';
     } else {
-        $message[] = 'Sai mật khẩu cũ hoặc sai xác nhận mật khẩu!';
+        $message[] = 'Mật khẩu cũ không chính xác hoặc mật khẩu mới không trùng khớp!';
     }
 }
 ?>
