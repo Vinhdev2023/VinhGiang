@@ -14,7 +14,7 @@ if(isset($_POST['update_cart'])){
    $cart_id = $_POST['cart_id'];
    $cart_quantity = $_POST['cart_quantity'];
    mysqli_query($conn, "UPDATE `tbl_orders` SET prd_quantity = '$cart_quantity' WHERE ord_id = '$cart_id'") or die('query failed');
-   $message[] = 'cart quantity updated!';
+   $message[] = 'Số lượng đã được cập nhật!';
 }
 
 if(isset($_GET['delete'])){
