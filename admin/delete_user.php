@@ -61,10 +61,10 @@ include 'masteradmin/mainmember.php';
                 </tbody>
                 </table>
                 <form method="post" class="d-flex justify-content-center">
-                    <label for="" style="font-size: 30px;">Có xóa Không: </label>
-                    <button type="submit" name="sbm" class="btn btn-danger">Có</button>
-                    <button type="submit" name="nosbm" class="btn btn-warning">Không</button>
-                    <a href="user.php" class="btn btn-light">Về trang cũ</a>
+                    <label for="" style="font-size: 30px;">Xác nhận: </label>
+                    <button type="submit" name="sbm" class="btn btn-danger">Xoá</button>
+                    <!-- <button type="submit" name="nosbm" class="btn btn-warning">Không</button> -->
+                    <a href="user.php" class="btn btn-warning">Trở về</a>
                 </form>
     </div>
 
