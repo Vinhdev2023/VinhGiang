@@ -20,13 +20,13 @@ if(isset($_POST['send'])){
    $select_message = mysqli_query($conn, "SELECT * FROM `tbl_custommer` WHERE cus_username = '$name' AND cus_address = '$email' AND cus_phone = '$number' AND cus_message = '$msg'") or die('query failed');
 
    if(mysqli_num_rows($select_message) > 0){
-      $message[] = 'message sent already!';
+      $message[] = 'Tin nhắn đã được gửi!';
    }else{
       mysqli_query($conn, "UPDATE tbl_custommer SET
       cus_message = '$msg', 
       cus_phone = '$number' 
       WHERE cus_address = '$email'") or die('query failed');
-      $message[] = 'message sent successfully!';
+      $message[] = 'Tin nhắn được gửi thành công!';
    }
 
 }
