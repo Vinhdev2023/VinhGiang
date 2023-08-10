@@ -84,8 +84,7 @@ include 'masteradmin/mainproduct.php';
         $show_page = $page+1;
         $page = $page-1;
 
-    }
-    else {
+    }else {
         $show_page = $total_page;
         $page = $page-2;
     }
