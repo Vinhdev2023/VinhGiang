@@ -79,7 +79,7 @@ if(!isset($user_id)){
          if ($fetch_orders["payment_status"] == 'đang chờ xác nhận') {
             echo 'red';
         } elseif ($fetch_orders["payment_status"] == 'đã xác nhận') {
-            echo 'yellow';
+            echo 'blue';
         } else {
             echo 'green';
         } ?>;"><?php echo $fetch_orders['payment_status'];} ?></span> </p>
