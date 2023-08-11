@@ -12,21 +12,16 @@ if(!isset($user_id)){
 
 if(isset($_POST['send'])){
 
-   $name = mysqli_real_escape_string($conn, $_POST['name']);
-   $email = mysqli_real_escape_string($conn, $_POST['email']);
-   $number = $_POST['number'];
    $msg = mysqli_real_escape_string($conn, $_POST['message']);
 
-   $select_message = mysqli_query($conn, "SELECT * FROM `tbl_custommer` WHERE cus_username = '$name' AND cus_address = '$email' AND cus_phone = '$number' AND cus_message = '$msg'") or die('query failed');
+   $select_message = mysqli_query($conn, "SELECT * FROM `tbl_custommer` WHERE cus_id = '$user_id' AND cus_message = '$msg'") or die('query failed');
 
    if(mysqli_num_rows($select_message) > 0){
       $message[] = 'Tin nhắn đã được gửi!';
    }else{
       mysqli_query($conn, "UPDATE tbl_custommer SET
-      cus_message = '$msg', 
-      cus_phone = '$number',
-      cus_fullname = '$name'
-      WHERE cus_address = '$email'") or die('query failed');
+      cus_message = '$msg'
+      WHERE cus_id = '$user_id'") or die('query failed');
       $message[] = 'Tin nhắn được gửi thành công!';
    }
 
@@ -64,9 +59,6 @@ if(isset($_POST['send'])){
 
    <form action="" method="post">
       <h3>Liên hệ</h3>
-      <input type="text" name="name" required placeholder="Nhập họ tên" class="box">
-      <input type="email" name="email" required placeholder="Nhập email" class="box">
-      <input type="number" name="number" required placeholder="Nhập số điện thoại" class="box">
       <textarea name="message" class="box" placeholder="Nhập lời nhắn" id="" cols="30" rows="10"></textarea>
       <input type="submit" value="Gửi tin nhắn" name="send" class="btn">
    </form>
