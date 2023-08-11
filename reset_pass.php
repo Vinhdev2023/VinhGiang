@@ -68,7 +68,7 @@ if (isset($_POST['submit'])) {
 
         <form action="" method="post">
             <h3>Đổi mật khẩu</h3>
-            <i class="fa-solid fa-user fa-lg" id="icon-people"></i>\
+            <i class="fa-solid fa-user fa-lg" id="icon-people"></i>
             <input type="password" name="old_pass" placeholder="Nhập mật khẩu cũ của bạn" required class="box">
             <input type="password" name="new_pass" minlength="8" placeholder="Nhập mật khẩu mới của bạn" required class="box">
             <input type="password" name="re_pass" placeholder="Nhập lại mật khẩu mới của bạn" required class="box">

@@ -76,7 +76,7 @@ if(!isset($user_id)){
          <p> Tổng giá : <span><?php while ($fetch_orders = mysqli_fetch_array($total_price_ord_query)) {
          echo $fetch_orders['total_price'];} ?> VNĐ</span> </p>
          <p> Trạng thái : <span style="color:<?php while ($fetch_orders = mysqli_fetch_array($payment_status_ord_query)) {
-         if ($fetch_orders["payment_status"] == 'đang chờ xác nhận') {
+         if ($fetch_orders["payment_status"] == 'đang chờ xác nhận' || $fetch_orders["payment_status"] == 'đã hủy đơn') {
             echo 'red';
         } elseif ($fetch_orders["payment_status"] == 'đã xác nhận') {
             echo 'blue';

@@ -24,7 +24,8 @@ if(isset($_POST['send'])){
    }else{
       mysqli_query($conn, "UPDATE tbl_custommer SET
       cus_message = '$msg', 
-      cus_phone = '$number' 
+      cus_phone = '$number',
+      cus_fullname = '$name'
       WHERE cus_address = '$email'") or die('query failed');
       $message[] = 'Tin nhắn được gửi thành công!';
    }
