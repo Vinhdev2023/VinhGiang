@@ -71,6 +71,16 @@ if (isset($_POST['add_to_cart'])) {
 
     </section>
 
+    <section class="home-contact">
+
+      <div class="content">
+         <h3>Có bất kỳ câu hỏi nào?</h3>
+         <p>Đừng ngại ngần mà đặt câu hỏi cho chúng tôi!</p>
+         <a href="contact.php" class="white-btn">Liên Hệ</a>
+      </div>
+
+   </section>
+
     <?php include 'footer.php'; ?>
 
     <!-- custom js file link  -->
