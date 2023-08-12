@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th8 09, 2023 lúc 08:25 AM
+-- Thời gian đã tạo: Th8 12, 2023 lúc 08:38 AM
 -- Phiên bản máy phục vụ: 10.4.27-MariaDB
 -- Phiên bản PHP: 8.2.0
 
@@ -58,16 +58,22 @@ CREATE TABLE `tbl_custommer` (
   `cus_pass` varchar(255) NOT NULL,
   `cus_address` varchar(255) NOT NULL,
   `cus_phone` varchar(60) NOT NULL,
-  `cus_message` varchar(6000) DEFAULT NULL
+  `cus_message` varchar(6000) DEFAULT NULL,
+  `cus_fullname` varchar(255) DEFAULT NULL,
+  `cus_method` varchar(255) DEFAULT NULL,
+  `cus_street` varchar(255) DEFAULT NULL,
+  `cus_city` varchar(255) DEFAULT NULL,
+  `cus_country` varchar(255) DEFAULT NULL,
+  `cus_pin_code` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `tbl_custommer`
 --
 
-INSERT INTO `tbl_custommer` (`cus_id`, `cus_username`, `cus_pass`, `cus_address`, `cus_phone`, `cus_message`) VALUES
-(1, 'vinhmoi', '202cb962ac59075b964b07152d234b70', 'daothanhvinh2004@gmail.com', '0982660369', ''),
-(2, 'vinh', '202cb962ac59075b964b07152d234b70', 'dttd6024@gmail.com', '', NULL);
+INSERT INTO `tbl_custommer` (`cus_id`, `cus_username`, `cus_pass`, `cus_address`, `cus_phone`, `cus_message`, `cus_fullname`, `cus_method`, `cus_street`, `cus_city`, `cus_country`, `cus_pin_code`) VALUES
+(1, 'vinhmoi', '07612f53659762db21ae0cf1e6e2d794', 'daothanhvinh2004@gmail.com', '0982660369', 'ád', 'Đào Thành Vinh', 'Tiền mặt', 'CT6, Trần Điền', 'Hà Nội', 'Việt Nam', '117117'),
+(2, 'vinh', '07612f53659762db21ae0cf1e6e2d794', 'dttd6024@gmail.com', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -95,7 +101,8 @@ INSERT INTO `tbl_orders` (`ord_id`, `customer_id`, `staff_id`, `prd_name`, `prd_
 (72, 1, 2, 'Detective conan vol 100', 100000, 1, '100---db_a84b9c5d7d2e47d09bfc246d7b94ea30_master.jpg', 'ordered'),
 (73, 1, 2, 'harry protter 7 bộ', 100000, 2, 'harry-post-ter.jpg', 'ordered'),
 (75, 1, 2, 'Yêu trên từng ngón tay', 150000, 1, 'img2.jpg', 'ordered'),
-(76, 2, 2, 'Detective conan vol 100', 100000, 1, '100---db_a84b9c5d7d2e47d09bfc246d7b94ea30_master.jpg', 'ordered');
+(76, 2, 2, 'Detective conan vol 100', 100000, 1, '100---db_a84b9c5d7d2e47d09bfc246d7b94ea30_master.jpg', 'ordered'),
+(78, 1, 2, 'Detective conan vol 100', 100000, 1, '100---db_a84b9c5d7d2e47d09bfc246d7b94ea30_master.jpg', 'ordered');
 
 -- --------------------------------------------------------
 
@@ -126,10 +133,11 @@ CREATE TABLE `tbl_order_detail` (
 --
 
 INSERT INTO `tbl_order_detail` (`ordd_id`, `cus_id`, `cus_name`, `cus_number`, `cus_email`, `cus_method`, `cus_address`, `total_products`, `prd_id`, `prd_name`, `prd_quantity`, `total_price`, `placed_on`, `payment_status`) VALUES
-(72, 1, 'Đào Thành Vinh', 982660369, 'daothanhvinh2004@gmail.com', 'Tiền mặt', 'flat no. , CT6, Trần Điền, Hà Nội, Việt Nam - 117117', 'Detective conan vol 100 (1) ', 1, 'Detective conan vol 100', 1, 100000, '07-Aug-2023 15:32:39', 'pending'),
-(73, 1, 'Đào Thành Vinh', 982660369, 'daothanhvinh2004@gmail.com', 'Tiền mặt', 'flat no. , CT6, Trần Điền, Hà Nội, Việt Nam - 117117', 'harry protter 7 bộ (2) ', 2, 'harry protter 7 bộ', 2, 200000, '07-Aug-2023 15:32:39', 'pending'),
-(75, 1, 'Đào Thành Vinh', 982660369, 'daothanhvinh2004@gmail.com', 'Tiền mặt', 'flat no. , CT6, Trần Điền, Hà Nội, Việt Nam - 117117', 'Yêu trên từng ngón tay (1) ', 3, 'Yêu trên từng ngón tay', 1, 150000, '07-Aug-2023 15:33:18', 'pending'),
-(76, 2, 'Đào Thành Vinh', 982660369, 'dttd6024@gmail.com', 'Tiền mặt', 'flat no. , CT6, Trần Điền, Hà Nội, Việt Nam - 117117', 'Detective conan vol 100 (1) ', 1, 'Detective conan vol 100', 1, 100000, '08-Aug-2023 22:07:39', 'pending');
+(72, 1, 'Đào Thành Vinh', 982660369, 'daothanhvinh2004@gmail.com', 'Tiền mặt', 'flat no. , CT6, Trần Điền, Hà Nội, Việt Nam - 117117', 'Detective conan vol 100 (1) ', 1, 'Detective conan vol 100', 1, 100000, '07-Aug-2023 15:32:39', 'đang chờ xác nhận'),
+(73, 1, 'Đào Thành Vinh', 982660369, 'daothanhvinh2004@gmail.com', 'Tiền mặt', 'flat no. , CT6, Trần Điền, Hà Nội, Việt Nam - 117117', 'harry protter 7 bộ (2) ', 2, 'harry protter 7 bộ', 2, 200000, '07-Aug-2023 15:32:39', 'đang chờ xác nhận'),
+(75, 1, 'Đào Thành Vinh', 982660369, 'daothanhvinh2004@gmail.com', 'Tiền mặt', 'flat no. , CT6, Trần Điền, Hà Nội, Việt Nam - 117117', 'Yêu trên từng ngón tay (1) ', 3, 'Yêu trên từng ngón tay', 1, 150000, '07-Aug-2023 15:33:18', 'đang chờ xác nhận'),
+(76, 2, 'Đào Thành Vinh', 982660369, 'dttd6024@gmail.com', 'Tiền mặt', 'flat no. , CT6, Trần Điền, Hà Nội, Việt Nam - 117117', 'Detective conan vol 100 (1) ', 1, 'Detective conan vol 100', 1, 100000, '08-Aug-2023 22:07:39', 'đang chờ xác nhận'),
+(78, 1, 'Đào Thành Vinh', 982660369, 'daothanhvinh2004@gmail.com', 'Tiền mặt', 'CT6, Trần Điền, Hà Nội, Việt Nam - 117117', 'Detective conan vol 100 (1) ', 1, 'Detective conan vol 100', 1, 100000, '12-Aug-2023 00:09:02', 'đang chờ xác nhận');
 
 -- --------------------------------------------------------
 
@@ -154,9 +162,9 @@ CREATE TABLE `tbl_product` (
 --
 
 INSERT INTO `tbl_product` (`prd_id`, `prd_name`, `prd_price`, `prd_quantity`, `prd_image`, `cate_id`, `prd_description`, `pubc_id`) VALUES
-(1, 'Detective conan vol 100', '100000', 94, '100---db_a84b9c5d7d2e47d09bfc246d7b94ea30_master.jpg', 1, '<p>conan tập 100</p>\r\n', 1),
-(2, 'harry protter 7 bộ', '100000', 95, 'harry-post-ter.jpg', 3, '', 2),
-(3, 'Yêu trên từng ngón tay', '150000', 198, 'img2.jpg', 3, '<p>của</p>\r\n', 1),
+(1, 'Detective conan vol 100', '100000', 98, '100---db_a84b9c5d7d2e47d09bfc246d7b94ea30_master.jpg', 1, '<p>conan tập 100</p>\r\n', 1),
+(2, 'harry protter 7 bộ', '100000', 99, 'harry-post-ter.jpg', 3, '', 2),
+(3, 'Yêu trên từng ngón tay', '150000', 199, 'img2.jpg', 3, '<p>của</p>\r\n', 1),
 (4, 'Vì em gặp anh', '120000', 1230, 'img3.jpg', 1, '', 6),
 (5, 'Từ bến sông nhùng', '1500000', 100, 'img4.jpg', 3, '<p>của: Phạm Quốc To&agrave;n</p>\r\n', 6),
 (123, '5 Centimet trên giây', '100000', 100, 'img5.jpg', 2, '<p>Của Shinkai Makoto</p>\r\n', 1),
@@ -287,13 +295,13 @@ ALTER TABLE `tbl_custommer`
 -- AUTO_INCREMENT cho bảng `tbl_orders`
 --
 ALTER TABLE `tbl_orders`
-  MODIFY `ord_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
+  MODIFY `ord_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_order_detail`
 --
 ALTER TABLE `tbl_order_detail`
-  MODIFY `ordd_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
+  MODIFY `ordd_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_product`
