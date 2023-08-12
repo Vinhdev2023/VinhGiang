@@ -35,14 +35,14 @@ include 'main.php';
                 </svg>
                 Thống kê
             </a>
-            <ul class="listmenu-2">
+            <!-- <ul class="listmenu-2">
                 <li class="list-ful"><a href="#" class="link link-style"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi b bi-app" viewBox="0 0 16 16">
                             <path d="M11 2a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3h6zM5 1a4 4 0 0 0-4 4v6a4 4 0 0 0 4 4h6a4 4 0 0 0 4-4V5a4 4 0 0 0-4-4H5z" />
                         </svg>doanh thu</a></li>
                 <li class="list-ful"><a href="#" class="link link-style"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi b bi-app" viewBox="0 0 16 16">
                             <path d="M11 2a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3h6zM5 1a4 4 0 0 0-4 4v6a4 4 0 0 0 4 4h6a4 4 0 0 0 4-4V5a4 4 0 0 0-4-4H5z" />
                         </svg>Sản phẩm sắp hết</a></li>
-            </ul>
+            </ul> -->
         </li>
 
         <li class="list-ful">
