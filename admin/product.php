@@ -9,12 +9,24 @@ $row_per_page = 3;
 $total_row = mysqli_num_rows(mysqli_query($connect,"SELECT * FROM tbl_product"));
 $total_page = ceil($total_row / $row_per_page);
 $per_row = ($page * $row_per_page) - $row_per_page;
-$sql = "SELECT prd_id,`prd_name`,prd_price,prd_quantity,prd_image,(SELECT `cate_name` 
-FROM tbl_category 
-WHERE tbl_category.cate_id = tbl_product.cate_id) AS cate_name, prd_description,(SELECT `pubc_name`
-FROM tbl_pubc
-WHERE tbl_pubc.pubc_id = tbl_product.pubc_id) AS pubc_name
-FROM tbl_product ORDER BY prd_id DESC LIMIT $per_row,$row_per_page;";
+if (isset($_GET['prd_id'])) {
+    $prd_id = $_GET['prd_id'];
+    $sql = "SELECT prd_id,`prd_name`,prd_price,prd_quantity,prd_image,(SELECT `cate_name` 
+    FROM tbl_category 
+    WHERE tbl_category.cate_id = tbl_product.cate_id) AS cate_name, prd_description,(SELECT `pubc_name`
+    FROM tbl_pubc
+    WHERE tbl_pubc.pubc_id = tbl_product.pubc_id) AS pubc_name
+    FROM tbl_product WHERE prd_id = '$prd_id';";
+} else {
+    $sql = "SELECT prd_id,`prd_name`,prd_price,prd_quantity,prd_image,(SELECT `cate_name` 
+    FROM tbl_category 
+    WHERE tbl_category.cate_id = tbl_product.cate_id) AS cate_name, prd_description,(SELECT `pubc_name`
+    FROM tbl_pubc
+    WHERE tbl_pubc.pubc_id = tbl_product.pubc_id) AS pubc_name
+    FROM tbl_product ORDER BY prd_id DESC LIMIT $per_row,$row_per_page;";
+}
+
+
 $query = mysqli_query($connect, $sql);
 ?>
 <?php
@@ -38,7 +50,9 @@ include 'masteradmin/mainproduct.php';
                 <th scope="col">Thuộc Loại</th>
                 <th scope="col">nhà xuất bản</th>
                 <th scope="col">Mô tả</th>
+                <?php if(!isset($_GET['prd_id'])){ ?>
                 <th scope="col" colspan="2">Tùy chỉnh</th>
+                <?php } ?>
             </tr>
         </thead>
         <tbody>
@@ -54,19 +68,27 @@ include 'masteradmin/mainproduct.php';
                     <td><?php echo $row["cate_name"]; ?></td>
                     <td><?php  echo $row["pubc_name"]; ?></td>
                     <td><?php echo $row["prd_description"]; ?></td>
+                    <?php if(!isset($_GET['prd_id'])){ ?>
                     <td><a href="repair_product.php?prd_id=<?php echo $row["prd_id"]; ?>" class="btn btn-warning" type="submit" name="repair">Sửa</a></td>
                     <td><a href="delete_product.php?prd_id=<?php echo $row["prd_id"]; ?>" class="btn btn-danger" type="submit" name="delete">Xóa</a></td>
+                    <?php } ?>
                 </tr>
             <?php $stt++;
             } ?>
         </tbody>
 
     </table>
-<a href="add_product.php" class="btn btn-success">Thêm sản phẩm mới</a>
-<ul class="control-page">
-<?php $control_next_page = $page ?>
-<?php $control_back_page = $page ?>
-    <li><a href="product.php?page=<?php if ($control_back_page == 1) {
+    <?php if(isset($_GET['prd_id'])){ 
+        $placed_on = $_GET['time_ord'];
+        $cus_id = $_GET['cus_id'];
+        ?>
+        <a href="complete_order.php?time=<?php echo $placed_on; ?>&cus_id=<?php echo $cus_id; ?>" class="btn btn-success">Trở về</a>
+    <?php }else{ ?>
+        <a href="add_product.php" class="btn btn-success">Thêm sản phẩm mới</a>
+    <ul class="control-page">
+    <?php $control_next_page = $page ?>
+    <?php $control_back_page = $page ?>
+        <li><a href="product.php?page=<?php if ($control_back_page == 1) {
         $control_back_page = 1;
     } else {
         $control_back_page--;
@@ -103,7 +125,8 @@ include 'masteradmin/mainproduct.php';
         $control_next_page++;
     }
      echo $control_next_page; ?>" class="btn btn-outline-danger">next</a></li>
-</ul>
+    </ul>
+<?php } ?>
 </div>
 <?php
 include 'masteradmin/footer.php';

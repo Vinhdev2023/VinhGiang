@@ -147,12 +147,12 @@ include 'masteradmin/mainorder.php';
                         <p>Phương thức thanh toán: <?php echo $item['cus_method']; ?></p>
                     <?php
                     }
-                    $query = mysqli_query($connect, "SELECT DISTINCT total_products FROM tbl_order_detail WHERE placed_on = '$placed_on' AND cus_id = '$cus_id'"); ?>
+                    $query = mysqli_query($connect, "SELECT DISTINCT total_products, prd_id FROM tbl_order_detail WHERE placed_on = '$placed_on' AND cus_id = '$cus_id'"); ?>
                     <p>Đơn hàng của khách:
                         <?php
-                        while ($item = mysqli_fetch_array($query)) {
-                            echo $item['total_products'] . ', ';
-                        }
+                        while ($item = mysqli_fetch_array($query)) { ?>
+                            <a href="product.php?prd_id=<?php echo $item['prd_id']; ?>&time_ord=<?php echo $placed_on; ?>&cus_id=<?php echo $cus_id; ?>"><?php echo $item['total_products']; ?>,</a>
+                        <?php }
                         ?></p>
                     <?php
                     $query = mysqli_query($connect, "SELECT SUM(total_price) AS total_price FROM tbl_order_detail WHERE placed_on = '$placed_on' AND cus_id = '$cus_id'");

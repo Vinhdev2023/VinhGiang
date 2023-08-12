@@ -46,7 +46,7 @@ $per_row = ($page * $row_per_page) - $row_per_page;
                                         } else {
                                             $control_back_page--;
                                         }
-                                        echo $control_back_page; ?>" class="btn btn-outline-danger"> < </a></li>
+                                        echo $control_back_page; ?>" class="btn"> < </a></li>
             <?php
             if ($page < ($total_page - 1)) {
                 $show_page = $page + 1;

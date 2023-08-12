@@ -19,7 +19,7 @@ if(!isset($user_id)){
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>orders</title>
-<link rel="icon" href="img/icon.png">
+   <link rel="icon" href="img/icon.png">
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
@@ -54,7 +54,7 @@ if(!isset($user_id)){
                   $cus_email_ord_query = mysqli_query($conn, "SELECT DISTINCT cus_email FROM `tbl_order_detail` WHERE cus_id = '$user_id' AND placed_on = '$placed_on'") or die('query failed');
                   $cus_address_ord_query = mysqli_query($conn, "SELECT DISTINCT cus_address FROM `tbl_order_detail` WHERE cus_id = '$user_id' AND placed_on = '$placed_on'") or die('query failed');
                   $cus_method_ord_query = mysqli_query($conn, "SELECT DISTINCT cus_method FROM `tbl_order_detail` WHERE cus_id = '$user_id' AND placed_on = '$placed_on'") or die('query failed');
-                  $total_products_ord_query = mysqli_query($conn, "SELECT DISTINCT total_products FROM `tbl_order_detail` WHERE cus_id = '$user_id' AND placed_on = '$placed_on'") or die('query failed');
+                  $total_products_ord_query = mysqli_query($conn, "SELECT DISTINCT total_products, prd_id FROM `tbl_order_detail` WHERE cus_id = '$user_id' AND placed_on = '$placed_on'") or die('query failed');
                   $total_price_ord_query = mysqli_query($conn, "SELECT SUM(total_price) AS total_price FROM `tbl_order_detail` WHERE cus_id = '$user_id' AND placed_on = '$placed_on'") or die('query failed');
                   $payment_status_ord_query = mysqli_query($conn, "SELECT DISTINCT payment_status FROM `tbl_order_detail` WHERE cus_id = '$user_id' AND placed_on = '$placed_on'") or die('query failed');
       ?>
@@ -71,8 +71,10 @@ if(!isset($user_id)){
           echo $fetch_orders['cus_address'];} ?></span> </p>
          <p> Phương thức thanh toán : <span><?php while ($fetch_orders = mysqli_fetch_array($cus_method_ord_query)) {
          echo $fetch_orders['cus_method'];} ?></span> </p>
-         <p> Đơn hàng của bạn : <span><?php while ($fetch_orders = mysqli_fetch_array($total_products_ord_query)) {
-         echo $fetch_orders['total_products'].', ';} ?></span> </p>
+         <p> Đơn hàng của bạn : <span><?php while ($fetch_orders = mysqli_fetch_array($total_products_ord_query)) { ?>
+            <a href="checkprd.php?prd_id=<?php echo $fetch_orders['prd_id'] ?>"><?php echo $fetch_orders['total_products'].', '; ?></a>
+         <?php
+         } ?></span> </p>
          <p> Tổng giá : <span><?php while ($fetch_orders = mysqli_fetch_array($total_price_ord_query)) {
          echo $fetch_orders['total_price'];} ?> VNĐ</span> </p>
          <p> Trạng thái : <span style="color:<?php while ($fetch_orders = mysqli_fetch_array($payment_status_ord_query)) {
