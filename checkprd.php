@@ -34,8 +34,8 @@ if (!isset($user_id)) {
    <?php include 'header.php'; ?>
 
    <div class="heading">
-      <h3>Kiểm tra</h3>
-      <p> <a href="index.php">Trang chủ</a> / Kiểm tra </p>
+      <h3>Chi tiết</h3>
+      <p> <a href="index.php">Trang chủ</a> / Chi tiết </p>
    </div>
 
    <section class="search-form">
