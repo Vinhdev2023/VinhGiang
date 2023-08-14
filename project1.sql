@@ -162,17 +162,17 @@ CREATE TABLE `tbl_product` (
 --
 
 INSERT INTO `tbl_product` (`prd_id`, `prd_name`, `prd_price`, `prd_quantity`, `prd_image`, `cate_id`, `prd_description`, `pubc_id`) VALUES
-(1, 'Detective conan vol 100', '100000', 98, '100---db_a84b9c5d7d2e47d09bfc246d7b94ea30_master.jpg', 1, '<p>conan tập 100</p>\r\n', 1),
-(2, 'harry protter 7 bộ', '100000', 99, 'harry-post-ter.jpg', 3, '', 2),
+(1, 'Detective conan vol 100', '100000', 98, '100---db_a84b9c5d7d2e47d09bfc246d7b94ea30_master.jpg', 2, '<p>conan tập 100</p>\r\n', 1),
+(2, 'harry protter 7 bộ', '100000', 99, 'harry-post-ter.jpg', 2, '', 2),
 (3, 'Yêu trên từng ngón tay', '150000', 199, 'img2.jpg', 3, '<p>của</p>\r\n', 1),
-(4, 'Vì em gặp anh', '120000', 1230, 'img3.jpg', 1, '', 6),
-(5, 'Từ bến sông nhùng', '1500000', 100, 'img4.jpg', 3, '<p>của: Phạm Quốc To&agrave;n</p>\r\n', 6),
-(123, '5 Centimet trên giây', '100000', 100, 'img5.jpg', 2, '<p>Của Shinkai Makoto</p>\r\n', 1),
-(127, 'Nói nhiều, làm ít', '100000', 100, 'img8.jpg', 1, '', 6),
+(4, 'Vì em gặp anh', '120000', 1230, 'img3.jpg', 3, '', 6),
+(5, 'Từ bến sông nhùng', '1500000', 100, 'img4.jpg', 4, '<p>của: Phạm Quốc To&agrave;n</p>\r\n', 6),
+(123, '5 Centimet trên giây', '100000', 100, 'img5.jpg', 3, '<p>Của Shinkai Makoto</p>\r\n', 1),
+(127, 'Nói nhiều, làm ít', '100000', 100, 'img8.jpg', 4, '', 6),
 (1211, 'Người phụ nữ đằng sau ống kính', '130000', 100, 'img7.jpg', 3, '', 1),
 (1212, 'Liên hoa yêu cốt', '100000', 100, 'img6.jpg', 4, '', 8),
-(1213, 'Đắc nhân tâm', '100000', 100, 'dac-nhan-tam-116541.jpg', 3, '<p>Dale Carnegie</p>\r\n', 3),
-(1214, 'Black Jack', '100000', 100, 'blackjack.jpg', 3, '<p><strong>TEZUKA OSAMU</strong></p>\r\n', 3),
+(1213, 'Đắc nhân tâm', '100000', 100, 'dac-nhan-tam-116541.jpg', 4, '<p>Dale Carnegie</p>\r\n', 3),
+(1214, 'Black Jack', '100000', 100, 'blackjack.jpg', 1, '<p><strong>TEZUKA OSAMU</strong></p>\r\n', 3),
 (1215, 'Spy x Family', '100000', 100, 'spy-x-family-tap-4.jpg', 1, '<p>Tatsuya ENDO</p>\r\n', 1),
 (1216, 'doremon', '100000', 100, 'doremon.jpg', 1, '<p>Fujiko F Fujio</p>\r\n', 1),
 (1217, 'ALICE in borderland', '100000', 100, 'aliceinborderlands.jpg', 1, '<p>Haro ASO</p>\r\n', 3);
