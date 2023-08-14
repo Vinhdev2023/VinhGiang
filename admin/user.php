@@ -42,7 +42,7 @@ include 'masteradmin/mainmember.php';
                                     echo '<p class="btn btn-warning">Nhân viên</p>';
                                 }
                                 ?></td>
-                            <td><a href="repair_user.php?username=<?php echo $row["username"]; ?>" class="btn btn-warning" type="submit" name="repair">Sửa</a></td>
+                            <td><a href="repair_user.php?username=<?php echo $row["username"]; ?>" class="btn btn-warning" type="submit" name="repair" >Sửa</a></td>
                             <td><a href="delete_user.php?username=<?php echo $row["username"]; ?>" class="btn btn-danger"  type="submit" name="delete">Xóa</a></td>
                         </tr>
                     <?php $stt++;

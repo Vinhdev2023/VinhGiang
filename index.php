@@ -21,16 +21,23 @@ if (isset($_POST['add_to_cart'])) {
 
         $check_cart_numbers = mysqli_query($conn, "SELECT * FROM `tbl_orders` WHERE customer_id = '$user_id' AND prd_name = '$product_name' AND cart_satus = 'ordering'") or die('query failed');
 
+        $select_user = mysqli_query($conn, "SELECT * FROM `tbl_user`") or die('query failed');
+        while ($item = mysqli_fetch_array($select_user)) {
+            $a[] = $item['user_id'];
+        }
+        $e = array_rand($a, 1);
+        $staff_id = $a[$e];
+
         if (mysqli_num_rows($check_cart_numbers) == 0) {
-            mysqli_query($conn, "INSERT INTO `tbl_orders`(customer_id, staff_id, prd_name, prd_price, prd_quantity, prd_image, cart_satus) VALUES('$user_id', '2', '$product_name', '$product_price', '$product_quantity', '$product_image', 'ordering')") or die('query failed');
+            mysqli_query($conn, "INSERT INTO `tbl_orders`(customer_id, staff_id, prd_name, prd_price, prd_quantity, prd_image, cart_satus) VALUES('$user_id', '$staff_id', '$product_name', '$product_price', '$product_quantity', '$product_image', 'ordering')") or die('query failed');
             $message[] = 'Sản phẩm được thêm vào giỏ!';
-         } else {
-            $item= mysqli_fetch_assoc($check_cart_numbers);
+        } else {
+            $item = mysqli_fetch_assoc($check_cart_numbers);
             $oldprd_quantity = $item['prd_quantity'];
             $newprd_quantity = $product_quantity + $oldprd_quantity;
             mysqli_query($conn, "UPDATE `tbl_orders` SET prd_quantity = '$newprd_quantity' WHERE customer_id = '$user_id' AND prd_name = '$product_name'") or die('query failed');
             $message[] = 'Sản phẩm được thêm vào giỏ!';
-         }
+        }
     } else {
         header('location: login.php');
     }
@@ -81,13 +88,13 @@ if (isset($_POST['add_to_cart'])) {
 
     <section class="home-contact">
 
-      <div class="content">
-         <h3>Có bất kỳ câu hỏi nào?</h3>
-         <p>Đừng ngại ngần mà đặt câu hỏi cho chúng tôi!</p>
-         <a href="contact.php" class="white-btn">Liên Hệ</a>
-      </div>
+        <div class="content">
+            <h3>Có bất kỳ câu hỏi nào?</h3>
+            <p>Đừng ngại ngần mà đặt câu hỏi cho chúng tôi!</p>
+            <a href="contact.php" class="white-btn">Liên Hệ</a>
+        </div>
 
-   </section>
+    </section>
 
     <?php include 'footer.php'; ?>
 

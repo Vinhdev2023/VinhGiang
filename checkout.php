@@ -38,7 +38,7 @@ if (isset($_POST['order_btn'])) {
          $cart_products = $cart_item['prd_name'] . ' (' . $cart_item['prd_quantity'] . ') ';
          $sub_total = ($cart_item['prd_price'] * $cart_item['prd_quantity']);
          $prd_quantity = $cart_item['prd_quantity'];
-         $cart_total += $sub_total;
+         // $cart_total += $sub_total;
          $prd_name = $cart_item['prd_name'];
          $ord_id = $cart_item['ord_id'];
 

@@ -18,10 +18,7 @@ if (isset($_POST["sbm"]) && isset($_POST["username"]) && isset($_POST["user_pass
         $checkUsername = mysqli_num_rows(mysqli_query($connect, "
         SELECT username FROM tbl_user WHERE username='$username'
         "));
-        $checkIDuser = mysqli_num_rows(mysqli_query($connect, "
-        SELECT user_id FROM tbl_user WHERE user_id=$user_id
-        "));
-        if ($checkUsername == 0 && $checkIDuser == 0) {
+        if ($checkUsername == 0) {
             $sql = "INSERT INTO tbl_user
             (username, user_pass, fulname, user_level)
             VALUE
