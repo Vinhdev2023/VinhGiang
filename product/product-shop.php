@@ -4,15 +4,27 @@ if (isset($_GET['page'])) {
 } else {
     $page = 1;
 }
+if (isset($_GET['cate'])) {
+    $cate_id = $_GET['cate'];
+    $sle_prd = mysqli_query($conn, "SELECT * FROM `tbl_product` WHERE prd_quantity > 0 AND cate_id = $cate_id") or die('query failed');
+}else {
+    $sle_prd = mysqli_query($conn, "SELECT * FROM `tbl_product` WHERE prd_quantity > 0") or die('query failed');
+}
 $row_per_page = 9;
-$total_row = mysqli_num_rows(mysqli_query($connect, "SELECT * FROM tbl_product"));
+$total_row = mysqli_num_rows($sle_prd);
 $total_page = ceil($total_row / $row_per_page);
 $per_row = ($page * $row_per_page) - $row_per_page;
 ?>
 <div class="box-container">
 
     <?php
-    $select_products = mysqli_query($conn, "SELECT * FROM `tbl_product` WHERE prd_quantity > 0 LIMIT $per_row,$row_per_page ") or die('query failed');
+    if (isset($_GET['cate'])) {
+        $cate_id = $_GET['cate'];
+        $select_products = mysqli_query($conn, "SELECT * FROM `tbl_product` WHERE prd_quantity > 0 AND cate_id = $cate_id LIMIT $per_row,$row_per_page ") or die('query failed');
+    }else {
+        $select_products = mysqli_query($conn, "SELECT * FROM `tbl_product` WHERE prd_quantity > 0 LIMIT $per_row,$row_per_page ") or die('query failed');
+    }
+    
     if (mysqli_num_rows($select_products) > 0) {
         while ($fetch_products = mysqli_fetch_assoc($select_products)) {
     ?>
@@ -41,7 +53,7 @@ $per_row = ($page * $row_per_page) - $row_per_page;
         <ul class="control-page">
             <?php $control_next_page = $page ?>
             <?php $control_back_page = $page ?>
-            <li><a href="shop.php?page=<?php if ($control_back_page == 1) {
+            <li><a href="shop.php?<?php if(isset($_GET['cate'])){echo 'cate='.$cate_id.'&';} ?>page=<?php if ($control_back_page == 1) {
                                             $control_back_page = 1;
                                         } else {
                                             $control_back_page--;
@@ -67,11 +79,11 @@ $per_row = ($page * $row_per_page) - $row_per_page;
             }
             for (; $page <= $show_page; $page++) {
             ?>
-                <li><a href="shop.php?page=<?php echo $page; ?>" class="btn"><?php echo $page; ?></a></li>
+                <li><a href="shop.php?<?php if(isset($_GET['cate'])){echo 'cate='.$cate_id.'&';} ?>page=<?php echo $page; ?>" class="btn"><?php echo $page; ?></a></li>
             <?php
             }
             ?>
-            <li><a href="shop.php?page=<?php if ($control_next_page > ($total_page - 2)) {
+            <li><a href="shop.php?<?php if(isset($_GET['cate'])){echo 'cate='.$cate_id.'&';} ?>page=<?php if ($control_next_page > ($total_page - 2)) {
                                             $control_next_page = $total_page;
                                         } else {
                                             $control_next_page++;

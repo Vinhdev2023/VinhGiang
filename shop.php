@@ -17,10 +17,18 @@ if (isset($_POST['add_to_cart'])) {
    $product_image = $_POST['product_image'];
    $product_quantity = $_POST['product_quantity'];
 
-   $check_cart_numbers = mysqli_query($conn, "SELECT * FROM `tbl_orders` WHERE customer_id = '$user_id'") or die('query failed');
+   $check_cart_numbers = mysqli_query($conn, "SELECT * FROM `tbl_orders` WHERE customer_id = '$user_id' AND prd_name = '$product_name' AND cart_satus = 'ordering'") or die('query failed');
 
-   mysqli_query($conn, "INSERT INTO `tbl_orders`(customer_id, staff_id, prd_name, prd_price, prd_quantity, prd_image, cart_satus) VALUES('$user_id', '2', '$product_name', '$product_price', '$product_quantity', '$product_image', 'ordering')") or die('query failed');
-   $message[] = 'Sản phẩm được thêm vào giỏ!';
+   if (mysqli_num_rows($check_cart_numbers) == 0) {
+      mysqli_query($conn, "INSERT INTO `tbl_orders`(customer_id, staff_id, prd_name, prd_price, prd_quantity, prd_image, cart_satus) VALUES('$user_id', '2', '$product_name', '$product_price', '$product_quantity', '$product_image', 'ordering')") or die('query failed');
+      $message[] = 'Sản phẩm được thêm vào giỏ!';
+   } else {
+      $item= mysqli_fetch_assoc($check_cart_numbers);
+      $oldprd_quantity = $item['prd_quantity'];
+      $newprd_quantity = $product_quantity + $oldprd_quantity;
+      mysqli_query($conn, "UPDATE `tbl_orders` SET prd_quantity = '$newprd_quantity' WHERE customer_id = '$user_id' AND prd_name = '$product_name'") or die('query failed');
+      $message[] = 'Sản phẩm được thêm vào giỏ!';
+   }
 }
 ?>
 
@@ -48,18 +56,26 @@ if (isset($_POST['add_to_cart'])) {
 
    <div class="heading">
       <h3>Cửa Hàng</h3>
-      <p> <a href="index.php">Trang Chủ</a> / Cửa Hàng </p>
+      <p> <a href="index.php">Trang Chủ</a> / <?php if (isset($_GET['cate'])) {
+         $id = $_GET['cate'];
+         $cate = mysqli_query($conn , "SELECT * FROM tbl_category WHERE cate_id = '$id'");
+         $item = mysqli_fetch_assoc($cate);
+         echo $item['cate_name'];
+      }else {
+         echo 'Cửa Hàng';
+      } ?> </p>
    </div>
    
    <section class="products">
       <h1 class="title">Sách</h1>
       
       <div class="container" style="font-size: 20px;">
+      <?php $cate_query = mysqli_query($conn , "SELECT * FROM tbl_category"); ?>
          <ul style="display: flex; gap: 55px; justify-content: center; margin: 10px 0px 15px 0px;">
-            <li><a href="filter_manga.php"> Manga </a> </li> 
-            <li><a href="filter_mystery.php"> Truyện trinh thám </a> </li>
-            <li><a href="filter_romance.php"> Truyện tình cảm </a> </li>
-            <li><a href="filter_life.php"> Truyện về cuộc sống </a> </li>
+            <li><a href="shop.php"> Tất cả </a> </li>
+            <?php while($item = mysqli_fetch_array($cate_query)){ ?>
+            <li><a href="shop.php?cate=<?php echo $item['cate_id'] ?>"> <?php echo $item['cate_name'] ?> </a> </li>
+            <?php } ?>
          </ul>
       </div>
 

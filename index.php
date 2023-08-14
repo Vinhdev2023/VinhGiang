@@ -19,10 +19,18 @@ if (isset($_POST['add_to_cart'])) {
         $product_image = $_POST['product_image'];
         $product_quantity = $_POST['product_quantity'];
 
-        $check_cart_numbers = mysqli_query($conn, "SELECT * FROM `tbl_orders` WHERE customer_id = '$user_id'") or die('query failed');
+        $check_cart_numbers = mysqli_query($conn, "SELECT * FROM `tbl_orders` WHERE customer_id = '$user_id' AND prd_name = '$product_name' AND cart_satus = 'ordering'") or die('query failed');
 
-        mysqli_query($conn, "INSERT INTO `tbl_orders`(customer_id, staff_id, prd_name, prd_price, prd_quantity, prd_image, cart_satus) VALUES('$user_id', '2', '$product_name', '$product_price', '$product_quantity', '$product_image', 'ordering')") or die('query failed');
-        $message[] = 'Sản phẩm được thêm vào giỏ!';
+        if (mysqli_num_rows($check_cart_numbers) == 0) {
+            mysqli_query($conn, "INSERT INTO `tbl_orders`(customer_id, staff_id, prd_name, prd_price, prd_quantity, prd_image, cart_satus) VALUES('$user_id', '2', '$product_name', '$product_price', '$product_quantity', '$product_image', 'ordering')") or die('query failed');
+            $message[] = 'Sản phẩm được thêm vào giỏ!';
+         } else {
+            $item= mysqli_fetch_assoc($check_cart_numbers);
+            $oldprd_quantity = $item['prd_quantity'];
+            $newprd_quantity = $product_quantity + $oldprd_quantity;
+            mysqli_query($conn, "UPDATE `tbl_orders` SET prd_quantity = '$newprd_quantity' WHERE customer_id = '$user_id' AND prd_name = '$product_name'") or die('query failed');
+            $message[] = 'Sản phẩm được thêm vào giỏ!';
+         }
     } else {
         header('location: login.php');
     }
