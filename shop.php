@@ -50,12 +50,22 @@ if (isset($_POST['add_to_cart'])) {
       <h3>Cửa Hàng</h3>
       <p> <a href="index.php">Trang Chủ</a> / Cửa Hàng </p>
    </div>
-
+   
    <section class="products">
-      
       <h1 class="title">Sách</h1>
+      
+      <div class="container" style="font-size: 20px;">
+         <ul style="display: flex; gap: 55px; justify-content: center; margin: 10px 0px 15px 0px;">
+            <li><a href="filter_manga.php"> Manga </a> </li> 
+            <li><a href="filter_mystery.php"> Truyện trinh thám </a> </li>
+            <li><a href="filter_romance.php"> Truyện tình cảm </a> </li>
+            <li><a href="filter_life.php"> Truyện về cuộc sống </a> </li>
+         </ul>
+      </div>
+
       <?php include 'product/product-shop.php'; ?>
 
+      
    </section>
    <?php include 'footer.php'; ?>
 
