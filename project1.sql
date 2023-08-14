@@ -40,10 +40,10 @@ CREATE TABLE `tbl_category` (
 --
 
 INSERT INTO `tbl_category` (`cate_id`, `cate_name`) VALUES
-(1, 'manga'),
-(2, 'truyện trinh thám'),
-(3, 'Truyện'),
-(4, 'câu truyện cuộc sống');
+(1, 'Manga'),
+(2, 'Truyện trinh thám'),
+(3, 'Truyện tình cảm'),
+(4, 'Câu truyện cuộc sống');
 
 -- --------------------------------------------------------
 
