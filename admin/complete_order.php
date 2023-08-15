@@ -180,10 +180,10 @@ include 'masteradmin/mainorder.php';
         </tbody>
     </table>
     <form action="" method="post">
-        <button class="btn btn-danger" name="wait_for_confirmation" <?php if($item["payment_status"] == 'đã xác nhận' || $item["payment_status"] == 'thành công'){ echo 'disabled';} ?>>Chờ xác nhận</button>
-        <button class="btn btn-warning" name="confirmed" <?php if($item["payment_status"] == 'thành công'){ echo 'disabled';} ?>>Đã xác nhận</button>
-        <button class="btn btn-success" name="success">Thành công</button>
-        <button class="btn btn-danger" name="delete" <?php if($item["payment_status"] == 'thành công'){ echo 'disabled';} ?>>Hủy Đơn</button>
+        <button class="btn btn-danger" name="wait_for_confirmation" <?php if($item["payment_status"] == 'đã xác nhận' || $item["payment_status"] == 'thành công' || $item["payment_status"] == 'đã hủy đơn'){ echo 'disabled';} ?>>Chờ xác nhận</button>
+        <button class="btn btn-warning" name="confirmed" <?php if($item["payment_status"] == 'thành công' || $item["payment_status"] == 'đã hủy đơn'){ echo 'disabled';} ?>>Đã xác nhận</button>
+        <button class="btn btn-success" name="success" <?php if($item["payment_status"] == 'thành công' || $item["payment_status"] == 'đã hủy đơn' ){ echo 'disabled';} ?>>Thành công</button>
+        <button class="btn btn-danger" name="delete" <?php if($item["payment_status"] == 'thành công' ){ echo 'disabled';} ?>>Hủy Đơn</button>
         <a href="order.php" class="btn btn-light">trở về</a>
     </form>
     <?php } ?>
